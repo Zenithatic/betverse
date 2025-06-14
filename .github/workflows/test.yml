@@ -1,0 +1,26 @@
+name: "Simple Test Workflow"
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Send a test message
+        run: echo "This is a test message from the GitHub Actions workflow."
+
+  run:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run a simple command
+        run: echo "Running a simple command in the workflow."
